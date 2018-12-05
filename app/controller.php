@@ -11,12 +11,14 @@ class controller
 {
     /**
      * 获得视图
+     * 视图文件会被redis缓存，在视图修改后更新缓存
      * @param string $view
      * @return bool|string
      * @throws Exception
      */
     protected function get_view($view = '')
     {
+        global $redis;
         $fun = FUN;
         $con = CON;
         $tiem= TIEM;
@@ -52,6 +54,18 @@ class controller
 
         if (file_exists($f) === true)
         {
+            $fk = $tiem.'/'.$con.'/'.$fun;
+            $d  = $redis->hGetAll($fk);                 //获得视图缓存
+            $ft = filemtime($f);                        //获得视图文件最近修改时间
+            if (!$d || $d['filectime'] <= $ft)          //视图缓存不存在或修改时间大于缓存时间，进入场景
+            {
+                $fg = file_get_contents($f);            //获得视图文件内容
+                $redis->hSet($fk, 'file', $fg);         //存储视图缓存
+                $redis->hSet($fk, 'filectime', time()); //存储视图缓存时间
+            }else{
+                $fg = $d['file'];
+            }
+            return $fg;
         }else{
             throw new Exception("视图{$f}不存在!");
         }

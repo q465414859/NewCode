@@ -83,3 +83,19 @@ function go_index()
         throw new Exception("找不到{$p1}端！");
     }
 }
+
+/**
+ * 开启redis
+ * 存储在$GLOBALS['redis']
+ */
+function open_redis()
+{
+    global $redis,$redis_ip,$redis_port;
+
+    if (!($redis instanceof Redis))
+    {
+        $redis = new Redis();
+        $redis->pconnect($redis_ip, $redis_port, 0);
+        $GLOBALS['redis'] = $redis;
+    }
+}
