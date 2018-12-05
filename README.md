@@ -1,7 +1,8 @@
 # NewCode
 小型的博客系统
 
-nginx配置：;
+nginx配置：
+
 server {
      listen       80;
      server_name  t2.com;
@@ -29,5 +30,6 @@ server {
      }
 }
 
-PHP7.0+;
+PHP7.0+
+
 Redis
