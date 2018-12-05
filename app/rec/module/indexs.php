@@ -7,10 +7,14 @@
  */
 namespace rec\mod;
 
-class indexs
+use \module;
+
+class indexs extends module
 {
     public function index()
     {
-        echo 333222;
+        $sql = "select * from `accounsts`";
+        $da  = $this->query($sql)->rowCount();
+        print_r($da);
     }
 }

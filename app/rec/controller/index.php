@@ -7,13 +7,17 @@
  */
 namespace rec\con;
 use \controller;
+use \module;
 use rec\mod\indexs;
 
 class index extends controller
 {
     function index()
     {
-        return $this->get_view();
+        $sa = new indexs();
+        echo "<pre>";
+        print_r($sa->index());
+        //return $this->get_view();
     }
 }
 

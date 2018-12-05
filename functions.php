@@ -74,28 +74,11 @@ function go_index()
 
         if (method_exists($con,$f))
         {
-            open_redis();//开启redis
             echo $con->$f();
         }else{
             throw new Exception("找不到{$con}类的{$f}方法！");
         }
     }else{
         throw new Exception("找不到{$p1}端！");
-    }
-}
-
-/**
- * 开启redis
- * 存储在$GLOBALS['redis']
- */
-function open_redis()
-{
-    global $redis,$redis_ip,$redis_port;
-
-    if (!($redis instanceof Redis))
-    {
-        $redis = new Redis();
-        $redis->pconnect($redis_ip, $redis_port, 0);
-        $GLOBALS['redis'] = $redis;
     }
 }
