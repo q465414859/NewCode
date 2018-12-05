@@ -74,6 +74,7 @@ function go_index()
 
         if (method_exists($con,$f))
         {
+            open_redis();//开启redis
             echo $con->$f();
         }else{
             throw new Exception("找不到{$con}类的{$f}方法！");
