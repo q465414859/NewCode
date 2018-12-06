@@ -20,5 +20,5 @@ $db_host = [                 //数据库连接
     'host'=>'127.0.0.1',
     'user'=>'root',
     'pass'=>'q3619940',
-    'name'=>'performance_schema',
+    'name'=>'blogs',
 ];

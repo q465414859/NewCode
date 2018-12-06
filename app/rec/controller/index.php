@@ -14,10 +14,10 @@ class index extends controller
 {
     function index()
     {
-        $sa = new indexs();
-        echo "<pre>";
-        print_r($sa->index());
-        //return $this->get_view();
+//        $sa = new indexs();
+//        echo "<pre>";
+//        print_r($sa->index());
+        return $this->get_view();
     }
 }
 
