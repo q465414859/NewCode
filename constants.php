@@ -6,7 +6,7 @@
  * Time: 17:22
  */
 
-define("PATH_INFO",$_SERVER['PATH_INFO']);
+define("PATH_INFO",$_GET['s']);
 define("ROOT",$_SERVER['DOCUMENT_ROOT']);
 
 $for_error  = true;          //开启报错

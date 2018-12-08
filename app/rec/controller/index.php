@@ -19,5 +19,13 @@ class index extends controller
 //        print_r($sa->index());
         return $this->get_view();
     }
+
+    function get_article_title()
+    {
+
+
+        $date = (new indexs())->index();
+        return json_encode($date,JSON_UNESCAPED_UNICODE);
+    }
 }
 
