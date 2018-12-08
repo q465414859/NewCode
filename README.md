@@ -11,7 +11,7 @@ nginx配置：
           index  index.html index.htm index.php;
 
           location / {
-              try_files $uri $uri/ /index.php$uri;
+              try_files $uri $uri/ /index.php?s=$uri&$query_string;
           }
 
           error_page   500 502 503 504  /50x.html;
