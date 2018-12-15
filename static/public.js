@@ -13,7 +13,6 @@ function get_article(ids) {
             $('#article').html(result['article']);
         }
     );
-
 }
 
 /**
@@ -34,7 +33,6 @@ function get_article_list(limits) {
             $('#recent').html(s);
         }
     );
-    
 }
 
 /**

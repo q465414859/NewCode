@@ -15,7 +15,6 @@ function index_data(ids,limits,classifys) {
 
             console.log(result);
 
-
             var s = '';
             var m = '';
 

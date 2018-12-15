@@ -10,6 +10,7 @@ class module
 {
     private $Db;
     private $Sm;
+    public $sql;
 
     public function __construct()
     {
@@ -33,8 +34,12 @@ class module
     public function query($sql,$data)
     {
         $Db = $this->Db;
-        $Sm = $Db->prepare($sql,array($Db::ATTR_CURSOR => $Db::CURSOR_FWDONLY));
-        $Sm ->execute($data);
+
+        $this->sql = $sql;//保存最近SQL
+
+        $Sm = $Db->prepare($sql,array($Db::ATTR_CURSOR => $Db::CURSOR_FWDONLY));//预设SQL
+
+        $Sm ->execute($data);//绑定数据
 
         $err = $Sm->errorInfo();
 
