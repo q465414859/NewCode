@@ -29,7 +29,7 @@ function index_data(ids,limits,classifys) {
             }
 
             //文章内容
-            $('#title').html(result['get_article']['title']);
+            $('#title').html('<a href="/rec/article/index?id=1">'+result['get_article']['title']+'</a>');
             $('#article').html(result['get_article']['article']);
 
             $('#recent').html(s);

@@ -1,11 +1,24 @@
 /**
+ * 获得GET
+ * @param name
+ * @returns {*}
+ * @constructor
+ */
+function GetQueryString(name)
+{
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)return  unescape(r[2]); return null;
+}
+
+/**
  * 设置文章内容
  * @param uri
  */
 function get_article(ids) {
 
     $.post(
-        '/rec/index/get_article',
+        '/rec/article/get_article',
         {id:ids},
         function(result){
             var result = JSON.parse(result);
@@ -22,7 +35,7 @@ function get_article(ids) {
 function get_article_list(limits) {
 
     $.post(
-        '/rec/index/get_article_list',
+        '/rec/article/get_article_list',
         {limit:limits},
         function(result){
             var result = JSON.parse(result);
@@ -41,7 +54,7 @@ function get_article_list(limits) {
  */
 function get_article_classify(classifys) {
     $.post(
-        '/rec/index/get_article_classify',
+        '/rec/article/get_article_classify',
         {classify:classifys},
         function(result){
             var result = JSON.parse(result);

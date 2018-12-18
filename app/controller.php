@@ -84,7 +84,7 @@ class controller
      */
     private function return_view($dir,$space)
     {
-        global $redis;
+        global $redis,$view_replace;
         if (file_exists($dir) === true)
         {
             $d  = $redis->hGetAll($space);                  //获得视图缓存
@@ -97,6 +97,7 @@ class controller
             }else{
                 $fg = $d['file'];
             }
+            $fg = strtr($fg,$view_replace);           //内容替换配置
             return $fg;
         }else{
             throw new Exception("视图{$dir}不存在!");

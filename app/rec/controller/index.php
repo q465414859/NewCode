@@ -46,34 +46,5 @@ class index extends controller
         return json_encode($data,JSON_UNESCAPED_UNICODE);
     }
 
-    /**
-     * 获得文章内容
-     * @return string
-     */
-    function get_article()
-    {
-        $data = (new article())->get_article();
-        return json_encode($data,JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-     * 获得文章列表
-     * @return string
-     */
-    function get_article_list()
-    {
-        $data = (new article())->get_article_list();
-        return json_encode($data,JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-     * 获得文章分类
-     * @return string
-     */
-    function get_article_classify()
-    {
-        $data = (new article())->get_article_classify();
-        return json_encode($data,JSON_UNESCAPED_UNICODE);
-    }
 }
 

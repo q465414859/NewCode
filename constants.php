@@ -22,3 +22,6 @@ $db_host = [                 //数据库连接
     'pass'=>'q3619940',
     'name'=>'blogs',
 ];
+$view_replace = [            //视图替换配置
+    '__ROOT__'=>'http://d2.com'
+];

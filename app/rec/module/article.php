@@ -9,13 +9,19 @@ namespace rec\mod;
 
 use \module;
 
+/**
+ * 文章模型类
+ * Class article
+ * @package rec\mod
+ */
 class article extends module
 {
     /**
-     * 获得文章
+     * 获得文章内容
+     * @param $id   文章ID
      * @return mixed
      */
-    public function get_article()
+    public function get_article($id)
     {
 //        $sql = "select * from `accounsts`";
 //        $da  = $this->query($sql)->rowCount();
@@ -37,7 +43,7 @@ class article extends module
      * 获得文章列表
      * @return array
      */
-    public function get_article_list($limits = '')
+    public function get_article_list($limit = 1)
     {
         $as = array();
 
@@ -53,7 +59,7 @@ class article extends module
      * 获得文章分类
      * @return array
      */
-    public function get_article_classify($article_id = '')
+    public function get_article_classify($limit = 1)
     {
         $as = array();
 
