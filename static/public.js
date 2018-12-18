@@ -4,7 +4,7 @@
  * @returns {*}
  * @constructor
  */
-function GetQueryString(name)
+function gain_get(name)
 {
     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
     var r = window.location.search.substr(1).match(reg);
