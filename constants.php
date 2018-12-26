@@ -8,6 +8,9 @@
 
 define("PATH_INFO",$_GET['s']);
 define("ROOT",$_SERVER['DOCUMENT_ROOT']);
+define("ONE_MINUTE",60);                    //一分钟
+define("ONE_HOUR",MINUTE1*60);              //一小时
+define("ONE_DAY",ONE_HOUR*24);              //一天
 
 $for_error  = true;          //开启报错
 $tiem_index = 'rec';         //默认端

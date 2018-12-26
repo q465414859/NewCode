@@ -75,7 +75,13 @@ function go_index()
         if (method_exists($con,$f))
         {
             open_redis();//开启redis
-            echo $con->$f();
+
+            if (method_exists($con,'_initialize'))
+            {
+                $con->_initialize();//初始化默认执行
+            }
+
+            echo $con->$f();//执行动作
         }else{
             throw new Exception("找不到{$con}类的{$f}方法！");
         }
@@ -98,4 +104,38 @@ function open_redis()
         $redis->pconnect($redis_ip, $redis_port, 0);
         $GLOBALS['redis'] = $redis;
     }
+}
+
+/**
+ * 重定向
+ * @param $url
+ * @param $start
+ */
+function headers($url,$start = false)
+{
+    global $view_replace;
+
+    if ($start === true)
+    {
+        $url = $view_replace['__ROOT__'].$url;
+    }
+    header('Location: '.$url);
+}
+
+/**
+ * 公共AJAX返回格式
+ * @param $code         返回码
+ * @param $data         返回数据
+ * @param string $url   返回后跳转到URL（跳转动作由前端完成）
+ * @return string
+ */
+function ajax_return($code,$data,$url = '')
+{
+    $arr = array(
+        $code,
+        'data' => $data,
+        'url'  => $url
+    );
+
+    return json_encode($arr,JSON_UNESCAPED_UNICODE);
 }
