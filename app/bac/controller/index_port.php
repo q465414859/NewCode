@@ -18,10 +18,14 @@ use rec\mod\article;
  */
 class index_port extends controller
 {
+    /**
+     * 获得文章列表数据
+     * @return string
+     */
     function get_article_list()
     {
         $limit = $_POST['limit']?:1;
-        $data = (new article)->get_full_article_class(2);
+        $data = (new article)->get_article_list($limit);
         return json_encode($data,JSON_UNESCAPED_UNICODE);
     }
 }
