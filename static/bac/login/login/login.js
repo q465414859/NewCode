@@ -17,6 +17,7 @@ function login_button() {
             console.log(result);
             console.log(result.url);
 
+            alert(result.code);
             window.location.href = result.url;
 
         }

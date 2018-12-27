@@ -56,8 +56,9 @@ class login extends controller
 
             }else{                                  //登陆成功
 
-                setcookie("user",$user,ONE_DAY);        //记录帐号cookie
-                setcookie("password",$password,ONE_DAY);//记录密码cookie
+                setcookie("user",$user,ONE_DAY,'/');        //记录帐号cookie
+                setcookie("password",$password,ONE_DAY,'/');//记录密码cookie
+                setcookie("id",$user_data['id'],ONE_DAY,'/');//记录ID
 
                 $code = '登陆成功！';
                 $url  = '/bac/index/index';

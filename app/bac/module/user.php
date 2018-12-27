@@ -29,6 +29,7 @@ class user extends module
 
         $sql = "select * from `user` where `user` = :user";
         $data = $this->query($sql,$arr)->fetchAll();    //获得用户所有数据
+
         return $data[0];
     }
 }

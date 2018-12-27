@@ -132,7 +132,7 @@ function headers($url,$start = false)
 function ajax_return($code,$data,$url = '')
 {
     $arr = array(
-        $code,
+        'code' => $code,
         'data' => $data,
         'url'  => $url
     );

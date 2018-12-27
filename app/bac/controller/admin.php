@@ -34,10 +34,11 @@ class admin extends controller
 
         if (!empty($user))
         {
-            $user = new user();
-            $user_data = $user->get_user($user);
+            $userd = new user();//获得用户类
 
-            if ($user_data['password'] != $password)
+            $user_data = $userd->get_user($user);   //获得用户数据
+
+            if ($user_data['password'] != $password)//比对密码
             {
                 echo "<script>alert('密码错误！')</script>";
                 headers('/bac/login/login',true);   //跳转到登录页
