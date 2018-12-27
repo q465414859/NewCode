@@ -57,3 +57,25 @@ Mysql
       `http_user_agent` text COMMENT 'HTTP_USER_AGENT参数',
       PRIMARY KEY (`id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='访问LOG';
+    
+    CREATE TABLE `article_class` (
+    	`id` tinyint UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id',
+    	`pid` tinyint UNSIGNED NOT NULL DEFAULT 0 COMMENT '上级ID',
+    	`name` VARCHAR(10) NOT NULL DEFAULT '' COMMENT '分类名',
+    	PRIMARY KEY (`id`)
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文章分类表';
+    
+    CREATE TABLE `article` (
+      `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
+      `text` text COMMENT '文章内容',
+      `head` varchar(20) DEFAULT '' COMMENT '文章标题',
+      `keyt` varchar(40) DEFAULT '' COMMENT '关键字',
+      `class_id` tinyint(4) NOT NULL DEFAULT '0' COMMENT '文章分类ID',
+      `ctime` int(10) unsigned DEFAULT '0' COMMENT '创建时间',
+      `stime` int(10) unsigned DEFAULT '0' COMMENT '最后修改时间',
+      `start` tinyint(1) unsigned DEFAULT '0' COMMENT '文章状态：0不可用，1可用',
+      PRIMARY KEY (`id`),
+      UNIQUE KEY `head` (`head`),
+      KEY `keyt` (`keyt`),
+      KEY `head_2` (`head`,`start`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文章表';

@@ -40,19 +40,45 @@ class article extends module
     }
 
     /**
-     * 获得文章列表
+     * 获得文章列表（含分类）
      * @return array
      */
     public function get_article_list($limit = 1)
     {
-        $as = array();
+        $sql = "select * from `article` limit {$limit}";
+        $data = $this->query($sql)->fetchAll();
 
-        $as[]['title']   = 'php开篇';
-        $as[]['title']   = '222222';
-        $as[]['title']   = '3333333';
-        $as[]['title']   = '33333333';
+        foreach ($data as $k => $v)
+        {
+            $class = implode(',',$this->get_full_article_class($v['class_id']));
 
-        return $as;
+            $data[$k]['class'] = $class;
+        }
+        return $data;
+    }
+
+    /**
+     * 获得完整文章分类（包括上级分类）
+     * 例：["PHP","PHP基础"]
+     * @param $id           分类ID
+     * @param array $str
+     * @return array
+     * @throws \Exception
+     */
+    public function get_full_article_class($id,$str = array())
+    {
+        $arr = array(':id' => $id);
+        $sql = 'select `name`,`pid` from `article_class` where `id` = :id';
+        $data = $this->query($sql,$arr)->fetchAll();    //获得文章分类数据
+
+        array_unshift($str,$data[0]['name']);   //从数组头部插入
+
+        if ($data[0]['pid'])    //有上级场景
+        {
+            return $this->get_full_article_class($data[0]['pid'],$str); //如果有上级ID后迭代获取
+        }else{
+            return $str;
+        }
     }
 
     /**

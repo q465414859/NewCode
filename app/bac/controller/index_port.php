@@ -9,6 +9,7 @@
 namespace bac\con;
 
 use \controller;
+use rec\mod\article;
 
 /**
  * 入口控制器接口
@@ -17,5 +18,10 @@ use \controller;
  */
 class index_port extends controller
 {
-
+    function get_article_list()
+    {
+        $limit = $_POST['limit']?:1;
+        $data = (new article)->get_full_article_class(2);
+        return json_encode($data,JSON_UNESCAPED_UNICODE);
+    }
 }

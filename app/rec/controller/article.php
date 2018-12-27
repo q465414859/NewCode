@@ -44,7 +44,7 @@ class article extends controller
      */
     function get_article_list()
     {
-        $limit = $_POST['limit'];
+        $limit = $_POST['limit']?:1;
         $data = (new rma())->get_article_list($limit);  //获得文章列表
         return json_encode($data,JSON_UNESCAPED_UNICODE);
     }
