@@ -22,8 +22,7 @@ function get_article(ids) {
         {id:ids},
         function(result){
             var result = JSON.parse(result);
-            $('#title').html(result['title']);
-            $('#article').html(result['article']);
+            set_article_view(result);//设置文章
         }
     );
 }
@@ -39,11 +38,7 @@ function get_article_list(limits) {
         {limit:limits},
         function(result){
             var result = JSON.parse(result);
-            var s = '';
-            for (var index in result){
-                s += '<div>'+result[index]['title']+'</div>';
-            }
-            $('#recent').html(s);
+            set_article_list_view(result);
         }
     );
 }

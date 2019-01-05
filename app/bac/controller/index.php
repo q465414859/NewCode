@@ -24,4 +24,19 @@ class index extends admin
         return $this->get_view(); //获得视图
     }
 
+    /**
+     * 后台文章列表页
+     */
+    function article_list()
+    {
+        return $this->get_view(); //获得视图
+    }
+
+    /**
+     * 后台文章页
+     */
+    function article()
+    {
+        return $this->get_view(); //获得视图
+    }
 }

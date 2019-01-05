@@ -24,7 +24,7 @@ class index_port extends controller
      */
     function get_article_list()
     {
-        $limit = $_POST['limit']?:1;
+        $limit = $_POST['limit']?:10;
         $data = (new article)->get_article_list($limit);
         return json_encode($data,JSON_UNESCAPED_UNICODE);
     }

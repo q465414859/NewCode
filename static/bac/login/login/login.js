@@ -4,6 +4,9 @@ $(function(){
     });
 });
 
+/**
+ * 登陆动作
+ */
 function login_button() {
     var userd     = $('#user').val();
     var passwordd = $('#password').val();
